@@ -85,47 +85,29 @@
                         <a href="electronic.html">Electronic</a>
                         <a href="jewellery.html">Jewellery</a>
                     </div>
+
+                    <!--Category-->
                     <span class="toggle_icon" onclick="openNav()"><img src="/static/images/toggle-icon.png"></span>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
-                        </button>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
+
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Sportswear &raquo;</a>
+                            {% for cat in category %}
+
+                            <li><a class="dropdown-item" href="#">{{cat.name}} &raquo;</a>
                                 <ul class="dropdown-menu dropdown-submenu">
+                                    {% for i in cat.sub_category_set.all %}
                                     <li>
-                                        <a class="dropdown-item" href="#">Submenu item 1</a>
+                                        <a class="dropdown-item" href="#">{{i.name}}</a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 2</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 3</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 4</a>
-                                    </li>
+                                    {%endfor%}
                                 </ul>
 
                             </li>
-                            <li><a class="dropdown-item" href="#">Another action &raquo;</a>
-                                <ul class="dropdown-menu dropdown-submenu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 1</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 2</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 3</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            {% endfor%}
                         </ul>
+
                     </div>
                     <div class="main">
                         <!-- Another variation with a button -->
