@@ -1,14 +1,21 @@
+from itertools import product
 from django.shortcuts import render
-from App.models import Category
-from App.models import Sub_Category
-def main (request):
-    category = Category.objects.all()
+from App.models import Category, Product
 
-    context ={
-        'category':category,
-    }
-    return render(request, 'main.html',context)
+
+def main(request):
+
+    return render(request, 'main.html')
+
 
 def index(request):
-    
-    return render(request, 'index.html')
+    category = Category.objects.all()
+
+    product = Product.objects.all()
+
+    context = {
+        'category': category,
+
+        'product': product,
+    }
+    return render(request, 'index.html', context)
