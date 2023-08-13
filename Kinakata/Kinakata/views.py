@@ -6,23 +6,14 @@ from django.contrib.auth import authenticate, login
 from App.models import UserCreateForm
 
 
-def main(request):
-    category = Category.objects.all()
-    context = {
-        'category': category,
-    }
-
-    return render(request, 'main.html', context)
-
-
 def index(request):
-
+    category = Category.objects.all()
     product = Product.objects.all()
 
-    context = {
+    context = {'category': category,
 
-        'product': product,
-    }
+               'product': product,
+               }
     return render(request, 'index.html', context)
 
 
