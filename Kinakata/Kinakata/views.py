@@ -1,5 +1,5 @@
 from itertools import product
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from App.models import Category, Product
 
 from django.contrib.auth import authenticate, login
@@ -38,7 +38,7 @@ def signup(request):
             login(request, new_user)
             return redirect('index')
     else:
-        form = UserCreaterForm()
+        form = UserCreateForm()
 
         context = {
             'form': form,
