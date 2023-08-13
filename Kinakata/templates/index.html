@@ -1,5 +1,7 @@
-{% extends 'main.html'%}
-{% block body%}
+{% extends 'main.html' %}
+{% block body %}
+
+
 
 <!-- fashion section start -->
 <div class="fashion_section">
@@ -7,26 +9,29 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="container">
+                    <h1 class="fashion_taital">Featured </h1>
 
-                    <h1 class="fashion_taital">{{cat.name}}</h1>
-                    {% for prod in product %}
                     <div class="fashion_section_2">
                         <div class="row">
-                            <div class="col-lg-4 col-sm-4">
+                            {% for prod in product %}
+                            <div class="col-lg-3 col-sm-3">
+
                                 <div class="box_main">
                                     <h4 class="shirt_text">{{prod.name}}</h4>
                                     <p class="price_text">Price <span style="color: #262626;">{{prod.price}} Tk.</span>
                                     </p>
-                                    <div class="tshirt_img"><img src={{prod.image}}></div>
+                                    <div class="tshirt_img"><img src='../{{prod.image}}'></div>
                                     <div class="btn_main">
                                         <div class="buy_bt"><a href="#">Buy Now</a></div>
                                         <div class="seemore_bt"><a href="#">See More</a></div>
                                     </div>
                                 </div>
+
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    {%endfor%}
+
                 </div>
             </div>
         </div>
@@ -44,4 +49,4 @@
 <!-- fashion section end -->
 
 
-{% endblock%}
+{% endblock %}

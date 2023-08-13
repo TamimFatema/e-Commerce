@@ -23,8 +23,25 @@ def index(request):
 
         'product': product,
     }
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
 
 
 def signup(request):
-    return render(request, 'registration/signup.html')
+    if request.method == 'POST':
+        form = UserCreateForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            new_user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+            login(request, new_user)
+            return redirect('index')
+    else:
+        form = UserCreaterForm()
+
+        context = {
+            'form': form,
+        }
+
+    return render(request, 'registration/signup.html', context)
